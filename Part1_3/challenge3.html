@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="">Dolsphin: </label>
+    <br><br>
+    <input type="text" id="Dscore1" placeholder="Score 1">
+    <br><br>
+    <input type="text" id="Dscore2" placeholder="Score 2">
+    <br><br>
+    <input type="text" id="Dscore3" placeholder="Score 3">
+    <br><br>
+    <input type="text" id="Ddtb" placeholder="Average Score">
+    <br><br>
+    <label for="">Koalas: </label>
+    <br><br>
+    <input type="text" id="kscore1" placeholder="Score 1">
+    <br><br>
+    <input type="text" id="kscore2" placeholder="Score 2">
+    <br><br>
+    <input type="text" id="kscore3" placeholder="Score 3">
+    <br><br>
+    <input type="text" id="kdtb" placeholder="Average Score">
+    <br><br>
+    <button id="ketqua">Ket qua</button>
+
+    <script>
+
+        function calcAvgScore(score1, score2, score3) {
+            return (score1 + score2 + score3) / 3;
+        }
+
+        document.getElementById('Dscore1').oninput =
+            document.getElementById('Dscore2').oninput =
+            document.getElementById('Dscore3').oninput = () => {
+                let score1 = parseFloat(document.getElementById('Dscore1').value)
+                let score2 = parseFloat(document.getElementById('Dscore2').value)
+                let score3 = parseFloat(document.getElementById('Dscore3').value)
+
+                if (score1 > 0 && score2 > 0 && score3 > 0) {
+                    document.getElementById('Ddtb').value = calcAvgScore(score1, score2, score3)
+                }
+                else document.getElementById('Ddtb').value = ""
+            }
+        document.getElementById('kscore1').oninput =
+            document.getElementById('kscore2').oninput =
+            document.getElementById('kscore3').oninput = () => {
+                let score1 = parseFloat(document.getElementById('kscore1').value)
+                let score2 = parseFloat(document.getElementById('kscore2').value)
+                let score3 = parseFloat(document.getElementById('kscore3').value)
+
+                if (score1 > 0 && score2 > 0 && score3 > 0) {
+                    document.getElementById('kdtb').value = calcAvgScore(score1, score2, score3)
+                }
+                else document.getElementById('kdtb').value = ""
+            }
+
+        document.getElementById('ketqua').addEventListener("click", (event) => {
+            let ddtb = parseFloat(document.getElementById('Ddtb').value)
+            let kdtb = parseFloat(document.getElementById('kdtb').value)
+
+            if (ddtb > 0 && kdtb > 0) {
+                if (ddtb > 100 && kdtb > 100) {
+                    if (ddtb > kdtb) {
+                        console.log("Doi Dolsphin thang")
+                    }
+                    else if (ddtb < kdtb) {
+                        console.log("Doi Koaloas thang")
+                    }
+                    else console.log("Ca hai doi deu hue!")
+                }
+            }
+        })
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
