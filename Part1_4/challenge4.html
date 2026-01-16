@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="totalOrder" placeholder="Input total order">
+    <br><br>
+    <input type="text" id="tip" placeholder="Tips" readonly>
+    <br><br>
+    <input type="text" id="total" placeholder="Total + Tips" readonly>
+    <br><br>
+
+
+    <script>
+
+        document.getElementById('totalOrder').oninput = () => {
+            let totalOrder = parseFloat(document.getElementById('totalOrder').value)
+            let tips = totalOrder > 50 && totalOrder < 300 ? totalOrder * 0.15 :
+                totalOrder > 300 ? 0.2 : 0;
+
+            document.getElementById('tip').value = tips
+            document.getElementById('total').value = tips + totalOrder
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
