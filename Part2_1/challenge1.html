@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="">Dolphins: </label> <br><br>
+    <input type="text" id="dscore1" placeholder="Score 1"> <br><br>
+    <input type="text" id="dscore2" placeholder="Score 2"> <br><br>
+    <input type="text" id="dscore3" placeholder="Score 3"> <br><br>
+    <input type="text" id="ddtb" placeholder="Average Score"> <br><br>
+    <label for="">Kolas: </label> <br><br>
+    <input type="text" id="kscore1" placeholder="Score 1"> <br><br>
+    <input type="text" id="kscore2" placeholder="Score 2"> <br><br>
+    <input type="text" id="kscore3" placeholder="Score 3"> <br><br>
+    <input type="text" id="kdtb" placeholder="Average Score"> <br><br>
+    <button id="btn">Calculator</button>
+
+    <script>
+        var calcAverage = (score1, score2, score3) => {
+            return (score1 + score2 + score3) / 3;
+        }
+        document.getElementById('dscore1').oninput =
+            document.getElementById('dscore2').oninput =
+            document.getElementById('dscore3').oninput = () => {
+                let score1 = parseFloat(document.getElementById('dscore1').value)
+                let score2 = parseFloat(document.getElementById('dscore2').value)
+                let score3 = parseFloat(document.getElementById('dscore3').value)
+
+                if (!isNaN(score1) && !isNaN(score2) && !isNaN(score3)) {
+                    document.getElementById('ddtb').value = calcAverage(score1, score2, score3)
+                }
+                else document.getElementById('ddtb').value = ""
+            }
+
+        document.getElementById('kscore1').oninput =
+            document.getElementById('kscore2').oninput =
+            document.getElementById('kscore3').oninput = () => {
+                let score1 = parseFloat(document.getElementById('kscore1').value)
+                let score2 = parseFloat(document.getElementById('kscore2').value)
+                let score3 = parseFloat(document.getElementById('kscore3').value)
+
+                if (!isNaN(score1) && !isNaN(score2) && !isNaN(score3)) {
+                    document.getElementById('kdtb').value = calcAverage(score1, score2, score3)
+                }
+                else document.getElementById('kdtb').value = ""
+            }
+
+        var checkWin = (ddtb, kdtb) => {
+            ddtb >= kdtb * 2 ? console.log(`Dolphins win (${ddtb} vs ${kdtb})`) :
+                kdtb >= ddtb * 2 ? console.log(`Koalas win (${kdtb} vs ${ddtb})`) :
+                    console.log(`Koalas vs Dolphins (${kdtb} vs ${ddtb})`)
+
+        }
+
+        document.getElementById('btn').addEventListener('click', () => {
+
+            let ddtb = parseFloat(document.getElementById('ddtb').value)
+            let kdtb = parseFloat(document.getElementById('kdtb').value)
+
+            checkWin(ddtb, kdtb)
+
+        })
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

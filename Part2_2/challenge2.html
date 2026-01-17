@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const totalOrders = [125, 555, 44]
+
+        let calcTip = (totalOrder) => {
+            return totalOrder > 50 && totalOrder < 300 ? totalOrder * 0.15 : totalOrder * 0.2;
+
+        }
+
+        let tips = []
+        totalOrders.forEach((totalOrder) => {
+            tips = [...tips, calcTip(totalOrder)]
+
+        })
+
+        var totals = totalOrders.map((order, index) => {
+            return order + tips[index]
+        })
+
+        console.log(tips)
+        console.log(totals)
+
+    </script>
+</body>
+
+</html>

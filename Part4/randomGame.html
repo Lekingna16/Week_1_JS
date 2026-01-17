@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <label for="" id="tieude">Tham gia trò chơi</label> <br> <br>
+        <label for="">SCORE</label>
+        <br> <br>
+        <label for="" id="score">0</label>
+        <br><br>
+        <input type="text" id="number" placeholder="Enter the number">
+        <br><br>
+        <label for="" id="secretNumber">?</label>
+        <br><br>
+        <button id="btnReset">Reset</button>
+    </div>
+</body>
+
+<script>
+
+    document.getElementById('number').onchange = () => {
+        let number = parseInt(document.getElementById('number').value)
+        let secretNumber = Math.floor(Math.random() * 1000)
+        let score = parseInt(document.getElementById('score').textContent)
+
+        document.getElementById('secretNumber').innerText = secretNumber
+
+        if (number === secretNumber) {
+            score += 10;
+            document.getElementById('score').innerText = score;
+            let container = document.querySelector('.container')
+            container.style.backgroundColor = 'yellow'
+            alert("You win!")
+        }
+        else {
+            let container = document.querySelector('.container')
+            container.style.backgroundColor = 'red'
+            alert("You lose!")
+        }
+
+    }
+
+    document.getElementById('btnReset').addEventListener('click', () => {
+        location.reload()
+    })
+
+
+</script>
+
+</html>

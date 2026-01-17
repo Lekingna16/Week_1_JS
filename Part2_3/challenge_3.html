@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var calcBMI = (weight, height) => {
+            return weight / height ** 2
+        }
+        const Marks = {
+            weight: 78,
+            height: 1.69,
+            name: 'Mark Millers',
+            bmi: function () {
+                return this.weight / this.height ** 2
+            }
+        }
+        const John = {
+            weight: 92,
+            height: 1.95,
+            name: 'John Smith',
+            bmi: function () {
+                return this.weight / this.height ** 2
+
+            }
+        }
+
+        console.log(Marks.bmi().toFixed(2))
+        console.log(John.bmi().toFixed(2))
+
+    </script>
+
+
+
+</body>
+
+</html>
