@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="khaoSat">
+        Tra loi khao sat
+    </button>
+
+    <script>
+
+        const poll = {
+            question: "What is your favourite programming language?",
+            options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+            answers: new Array(4).fill(0),
+            registerNewAnswer: function () {
+
+                let que = this.question + '\n'
+                let type = [5, 2, 3]
+                this.options.forEach(element => {
+                    que += element + "\n"
+                });
+                let answer = parseInt(prompt(que))
+
+                if (!isNaN(answer) && (answer >= 0 && answer <= 3)) {
+
+                    this.answers[answer] = 1
+                    displayResults(type)
+                }
+
+                else console.log("Cau tra loi khong hop le!");
+            }
+        };
+        const displayResults = (type) => {
+
+            if (typeof (type) == 'Array')
+                console.log(type);
+            else
+                console.log(`Poll results are ${type}`);
+        }
+
+        document.getElementById("khaoSat").addEventListener('click', () => {
+            poll.registerNewAnswer()
+            console.log(poll.answers);
+
+        })
+
+    </script>
+
+</body>
+
+</html>

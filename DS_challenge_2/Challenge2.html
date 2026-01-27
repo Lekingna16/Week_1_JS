@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borrussia Dortmund',
+            players: [
+                [
+                    'Neuer',
+                    'Pavard',
+                    'Martinez',
+                    'Alaba',
+                    'Davies',
+                    'Kimmich',
+                    'Goretzka',
+                    'Coman',
+                    'Muller',
+                    'Gnarby',
+                    'Lewandowski',
+                ],
+                [
+                    'Burki',
+                    'Schulz',
+                    'Hummels',
+                    'Akanji',
+                    'Hakimi',
+                    'Weigl',
+                    'Witsel',
+                    'Hazard',
+                    'Brandt',
+                    'Sancho',
+                    'Gotze',
+                ],
+            ],
+            score: '4:0',
+            scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+                'Hummels'],
+            date: 'Nov 9th, 2037',
+            odds: {
+                team1: 1.33,
+                x: 3.25,
+                team2: 6.5,
+            },
+        };
+
+        //function print scored with the goal number 
+
+        const printGoalNumber = (scored) => {
+            scored.forEach((element, index) => {
+                console.log(`Goal ${index + 1}: ${element}`);
+
+            });
+
+        }
+
+        //function average odds 
+        const averageOdds = (odds) => {
+            let sum = 0
+            for (let x in odds) {
+                sum += odds[x]
+            }
+
+
+            console.log(sum);
+
+        }
+
+        // function print each odds 
+        const printOdds = (odds) => {
+            for (odd in odds) {
+                const str = odd == 'x' ? "draw" : `victory ${game[odd]}`
+                console.log(`Odd of ${str}: ${odds[odd]}`);
+
+            }
+
+        }
+        //printOdds(game.odds)
+
+        //function change array to object
+        const changeArrayToObject = (scored) => {
+
+            const map = new Map();
+
+            scored.forEach((item) => {
+                map.set(item, (map.get(item) || 0) + 1);
+            })
+
+            for (const [key, value] of map) {
+                console.log(`${key}: ${value}`);
+
+            }
+
+
+
+        }
+        changeArrayToObject(game.scored)
+
+
+
+    </script>
+
+
+</body>
+
+</html>
