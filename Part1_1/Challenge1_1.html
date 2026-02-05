@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge1</title>
+</head>
+
+<body>
+
+    <input type="text" id="Mmas" placeholder="Mark's mass">
+    <input type="text" id="Mheight" placeholder="Mark's height">
+    <input type="text" id="Jmas" placeholder="John's mass">
+    <input type="text" id="Jheight" placeholder="John's height">
+
+    <button id="compare">Compare</button>
+
+    <script>
+
+
+
+        let calBMI = (mass, height) => {
+            return mass / height ** 2
+        }
+
+
+        let compareBMI = (Mbmi, Jbmi) => {
+            Mbmi > Jbmi ? console.log("Mark's bmi higher than John's bmi ") :
+                console.log("John's bmi higher than Mark's bmi");
+
+        }
+
+        document.getElementById("compare").addEventListener("click", () => {
+            let Mmas = parseFloat(document.getElementById("Mmas").value)
+            let Mheight = parseFloat(document.getElementById("Mheight").value)
+            let Jmas = parseFloat(document.getElementById("Jmas").value)
+            let Jheight = parseFloat(document.getElementById("Jheight").value)
+
+            let Mbmi = calBMI(Mmas, Mheight)
+            let Jbmi = calBMI(Jmas, Jheight)
+
+
+
+
+
+            console.log(`Mark's bmi is: ${Mbmi}`);
+            console.log(`John's bmi is: ${Jbmi}`);
+
+            compareBMI(Mbmi, Jbmi)
+        })
+
+
+
+    </script>
+
+
+</body>
+
+</html>
