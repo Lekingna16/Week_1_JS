@@ -8,82 +8,62 @@
 </head>
 
 <body>
-    <label for="">Dolsphin: </label>
-    <br><br>
-    <input type="text" id="Dscore1" placeholder="Score 1">
-    <br><br>
-    <input type="text" id="Dscore2" placeholder="Score 2">
-    <br><br>
-    <input type="text" id="Dscore3" placeholder="Score 3">
-    <br><br>
-    <input type="text" id="Ddtb" placeholder="Average Score">
-    <br><br>
-    <label for="">Koalas: </label>
-    <br><br>
-    <input type="text" id="kscore1" placeholder="Score 1">
-    <br><br>
-    <input type="text" id="kscore2" placeholder="Score 2">
-    <br><br>
-    <input type="text" id="kscore3" placeholder="Score 3">
-    <br><br>
-    <input type="text" id="kdtb" placeholder="Average Score">
-    <br><br>
-    <button id="ketqua">Ket qua</button>
+
+    <input type="text" id="koala-score1" placeholder="Enter Koala's score 1">
+    <input type="text" id="koala-score2" placeholder="Enter Koala's score 2">
+    <input type="text" id="koala-score3" placeholder="Enter Koala's score 3">
+    <input type="text" id="dolphin-score1" placeholder="Enter Dolphin's score 1">
+    <input type="text" id="dolphin-score2" placeholder="Enter Dolphin's score 2">
+    <input type="text" id="dolphin-score3" placeholder="Enter Dolphin's score 3">
+
+    <button id="calculator">Calculator</button>
 
     <script>
 
-        function calcAvgScore(score1, score2, score3) {
-            return (score1 + score2 + score3) / 3;
+        let avgScore = (score1, score2, score3) => {
+            return (score1 + score2 + score3) / 3
         }
 
-        document.getElementById('Dscore1').oninput =
-            document.getElementById('Dscore2').oninput =
-            document.getElementById('Dscore3').oninput = () => {
-                let score1 = parseFloat(document.getElementById('Dscore1').value)
-                let score2 = parseFloat(document.getElementById('Dscore2').value)
-                let score3 = parseFloat(document.getElementById('Dscore3').value)
+        document.getElementById('calculator').addEventListener('click', () => {
+            let kscore1 = parseFloat(document.getElementById('koala-score1').value)
+            let kscore2 = parseFloat(document.getElementById('koala-score2').value)
+            let kscore3 = parseFloat(document.getElementById('koala-score3').value)
 
-                if (score1 > 0 && score2 > 0 && score3 > 0) {
-                    document.getElementById('Ddtb').value = calcAvgScore(score1, score2, score3)
-                }
-                else document.getElementById('Ddtb').value = ""
+
+            let dscore1 = parseFloat(document.getElementById('dolphin-score1').value)
+            let dscore2 = parseFloat(document.getElementById('dolphin-score2').value)
+            let dscore3 = parseFloat(document.getElementById('dolphin-score3').value)
+
+
+            let kavgScore = avgScore(kscore1, kscore2, kscore3).toFixed(2);
+
+            let davgScore = avgScore(dscore1, dscore2, dscore3).toFixed(2);
+
+            if (kavgScore > davgScore && kavgScore > 100) {
+                console.log(`Koala's average score ${kavgScore} higher than Dolphin's average score ${davgScore}`);
             }
-        document.getElementById('kscore1').oninput =
-            document.getElementById('kscore2').oninput =
-            document.getElementById('kscore3').oninput = () => {
-                let score1 = parseFloat(document.getElementById('kscore1').value)
-                let score2 = parseFloat(document.getElementById('kscore2').value)
-                let score3 = parseFloat(document.getElementById('kscore3').value)
+            else if (davgScore > kavgScore && davgScore > 100) {
+                console.log(`Dolphin's average score ${davgScore} higher than Koala's average score ${kavgScore}`);
 
-                if (score1 > 0 && score2 > 0 && score3 > 0) {
-                    document.getElementById('kdtb').value = calcAvgScore(score1, score2, score3)
-                }
-                else document.getElementById('kdtb').value = ""
             }
 
-        document.getElementById('ketqua').addEventListener("click", (event) => {
-            let ddtb = parseFloat(document.getElementById('Ddtb').value)
-            let kdtb = parseFloat(document.getElementById('kdtb').value)
+            else console.log(`Dolphin's average score ${davgScore} equal Koala's average score ${kavgScore}`);
 
-            if (ddtb > 0 && kdtb > 0) {
-                if (ddtb > 100 && kdtb > 100) {
-                    if (ddtb > kdtb) {
-                        console.log("Doi Dolsphin thang")
-                    }
-                    else if (ddtb < kdtb) {
-                        console.log("Doi Koaloas thang")
-                    }
-                    else console.log("Ca hai doi deu hue!")
-                }
-            }
+
+
+
+
+
+
+
+
+
         })
 
-
-
-
-
-
     </script>
+
+
+
 
 </body>
 

@@ -8,29 +8,42 @@
 </head>
 
 <body>
-    <input type="text" id="totalOrder" placeholder="Input total order">
-    <br><br>
-    <input type="text" id="tip" placeholder="Tips" readonly>
-    <br><br>
-    <input type="text" id="total" placeholder="Total + Tips" readonly>
-    <br><br>
 
+    <input type="text" id="bill" placeholder="Enter total bill....">
+    <input type="text" id="tip" readonly>
+    <input type="text" id="totalOrder" readonly>
+    <button id="button">Calculator</button>
 
     <script>
-
-        document.getElementById('totalOrder').oninput = () => {
-            let totalOrder = parseFloat(document.getElementById('totalOrder').value)
-            let tips = totalOrder > 50 && totalOrder < 300 ? totalOrder * 0.15 :
-                totalOrder > 300 ? 0.2 : 0;
-
-            document.getElementById('tip').value = tips
-            document.getElementById('total').value = tips + totalOrder
-
-
+        let calcTip = (totalBill) => {
+            if (totalBill < 50)
+                return 0;
+            return (totalBill >= 50 && totalBill <= 300) ? 0.15 * totalBill : 0.2 * totalBill;
 
         }
 
+
+
+        document.getElementById('button').addEventListener('click', () => {
+            let totalBill = parseFloat(document.getElementById('bill').value)
+
+            console.log(`Total bill: ${totalBill}`);
+
+
+
+            let tip = calcTip(totalBill)
+
+            document.getElementById('tip').value = tip
+            console.log(`Tips: ${tip}`);
+            document.getElementById('totalOrder').value = (tip + totalBill)
+            console.log(`Total bill + tips: ${totalBill + tip}`);
+        })
+
+
+
+
     </script>
+
 </body>
 
 </html>
