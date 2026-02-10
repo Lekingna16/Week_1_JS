@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        class Car {
+            constructor(make, speed) {
+                this.make = make;
+                this.speed = speed
+            }
+
+            accelerate() {
+                this.speed += 10
+                console.log(`The new speed is: ${this.speed}`);
+
+            }
+
+            brake() {
+                this.speed -= 5
+                console.log(`The new speed is: ${this.speed}`);
+
+            }
+
+        }
+
+        const ford = new Car("Ford", 120)
+        console.log(`The Ford's speed before accelerate: ${ford.speed}`);
+        ford.accelerate()
+        console.log(`The Ford's speed before brake: ${ford.speed}`);
+        ford.brake()
+
+
+
+
+    </script>
+</body>
+
+</html>
