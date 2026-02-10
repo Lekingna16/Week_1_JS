@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let checkEating = (dog) => {
+            if (dog.curFood < dog.recommnendedFood * 0.9)
+                return "too little"
+            else if (dog.curFood > dog.recommnendedFood * 1.1)
+                return "too much"
+            else return "normal"
+        }
+
+        let toString = (arrays) => {
+            let str = ""
+            for (let i = 0; i < arrays.length - 1; i++) {
+                str += arrays[i] + " and "
+            }
+            return str + arrays[arrays.length - 1]
+        }
+
+
+
+
+
+
+        const dogs = [
+            { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+            { weight: 8, curFood: 200, owners: ['Matilda'] },
+            { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+            { weight: 32, curFood: 340, owners: ['Michael'] },
+        ];
+
+        dogs.forEach((dog) => {
+
+            dog.recommnendedFood = dog.weight ** 0.75 * 28
+        })
+
+        console.log(dogs)
+
+        const ownerEatTooMuch = []
+        const ownerEatTooLittle = []
+        const dogsEatNormal = []
+
+
+
+        dogs.forEach((dog) => {
+            let status = checkEating(dog)
+            if ("too much" === status)
+                ownerEatTooMuch.push(...dog.owners)
+            else if ("too little" === status)
+                ownerEatTooLittle.push(...dog.owners)
+            else dogsEatNormal.push(dog)
+        })
+
+
+        console.log(toString(ownerEatTooLittle) + " dog's eat too little");
+        console.log(toString(ownerEatTooMuch) + " dogs eat to much");
+
+        let count = 0;
+        for (let dog of dogs) {
+            if (dog.curFood === dog.recommnendedFood) {
+                count++;
+            }
+
+        }
+        // log dogs curFood = recommendFood
+
+        console.log(count > 0 ? `Have ${count} dogs eat exactly recommended food` : "No dog");
+
+
+        // log nhung con cho an vua phai 
+
+        if (dogsEatNormal.length === 0) {
+            console.log("No dog eat normal");
+        }
+
+        else console.log(`Have ${dogsEatNormal.length} eat normal`);
+
+
+        // copy mang cho va sap xep theo thu tu tang dan cua muc an khuyen nghi
+
+        const dogsCopy = [...dogs]
+
+        dogsCopy.sort((a, b) => a.recommnendedFood - b.recommnendedFood)
+        console.log(`Array is sorted:`);
+        console.log(dogsCopy);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
